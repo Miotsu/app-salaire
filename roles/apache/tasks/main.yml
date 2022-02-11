@@ -1,0 +1,15 @@
+---
+# tasks file for apache
+
+ - name: generation local key
+   local_action:
+    module: user
+    name: root
+    generate_ssh_key: yes
+
+ - name: copie des clés
+   
+ 
+
+
+
