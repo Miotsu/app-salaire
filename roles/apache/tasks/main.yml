@@ -28,7 +28,7 @@
   systemd:
     name: httpd
     enabled: yes
-    state: enabled
+    state: restarted
 
 - name: restart firewall
   systemd:
