@@ -1,10 +1,10 @@
 ---
 
 - name: Création des utilisateurs
-   hosts: all
-   become: yes
-   remote_user: root
-   roles:
+  hosts: all
+  become: yes
+  remote_user: root
+  roles:
     - createuser
     
 - name: install roles
