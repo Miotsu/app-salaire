@@ -1,0 +1,23 @@
+---
+
+    - name: ajout group
+      group:
+              name: ansible
+              state: present
+
+    - name: create user
+      user:
+            name: root
+            group: ansible
+            state: present
+
+    - name: ajout de la clé ssh
+      authorized_key:
+              user: root
+              state: present
+              key: "{{ lookup('file', '/home/root/.ssh/id_rsa.pub') }}"
+
+    - name: Ajout de root dans sudo
+      template:
+              src: sudo.j2
+              dest: /etc/sudoers.d/root
