@@ -15,7 +15,7 @@
 
 - name: upload web app source
     copy:
-      src: https://github.com/Miotsu/app-salaire/tree/main/roles/apache/files
+      src: /files/
       dest: /var/www/html/
    
 - name: permit traffic in default zone for https service
