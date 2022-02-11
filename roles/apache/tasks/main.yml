@@ -1,15 +1,39 @@
 ---
-# tasks file for apache
-
- - name: generation local key
-   local_action:
-    module: user
-    name: root
-    generate_ssh_key: yes
-
- - name: copie des clés
-   
  
+ - name: Install Packages
+  yum:
+    name:
+      - git
+      - httpd
+      - php
+      - php-mysql
+    state: present
 
+- name: Give writable mode to http folder
+  file:
+   path: /var/www/html
+   state: directory
+   mode: 0755
 
+- name: Clone a repo with separate git directory
+  git:
+    repo: https://github.com/ludovic-tech/app-php.git
+    dest: /var/www/html
 
+- name: permit traffic in default zone for https service
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+
+- name: restart and enable systemd apache service
+  systemd:
+    name: httpd
+    enabled: yes
+    state: enabled
+
+- name: restart and enable systemd apache service
+  systemd:
+   name: httpd
+   enabled: yes
+   state: restarted
