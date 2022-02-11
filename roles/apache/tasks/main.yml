@@ -2,8 +2,6 @@
 - name: Install Packages
   yum:
     name:
-      - epel-release
-      - git
       - httpd
       - php
       - php-mysql
