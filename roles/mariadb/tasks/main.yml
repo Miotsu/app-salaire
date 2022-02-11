@@ -9,8 +9,9 @@
 - name: restart and enable systemd nginx service
   systemd:
     name: mariadb
+    state: started
     enabled: yes
-    state: restarted
+   
 
 - name: Start mysql_secure_installation
   command: 'echo "& y y Monmotdepasse Monmotdepasse y y y y" | ./usr/bin/mysql_secure_installation'
