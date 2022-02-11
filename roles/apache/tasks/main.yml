@@ -29,3 +29,8 @@
     name: httpd
     enabled: yes
     state: enabled
+
+- name: restart firewall
+  systemd:
+   service: firewalld
+   state: reloaded
