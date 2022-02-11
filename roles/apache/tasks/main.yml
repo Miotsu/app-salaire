@@ -14,9 +14,9 @@
    mode: 0755
 
 - name: upload web app source
-    copy:
-      src: app/
-      dest: /var/www/html/
+  copy:
+    src: app/
+    dest: /var/www/html/
    
 - name: permit traffic in default zone for https service
   firewalld:
