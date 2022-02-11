@@ -1,2 +1,22 @@
 ---
-# tasks file for mariadb
+- name: install mariadb package
+  yum:
+   name: 
+    - mariadb
+    - mariadb-server
+   state: present
+
+- name: restart and enable systemd nginx service
+  systemd:
+    name: mariadb
+    enabled: yes
+    state: restarted
+
+- name: Start mysql_secure_installation
+  command: 'echo "& y y Mypasswd Mypasswd y y y y" | ./usr/bin/mysql_secure_installation'
+
+- name: restart and enable systemd nginx service
+  systemd:
+    name: mariadb
+    enabled: yes
+    state: enabled
