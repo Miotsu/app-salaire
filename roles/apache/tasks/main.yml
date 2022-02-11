@@ -12,6 +12,11 @@
    path: /var/www/html
    state: directory
    mode: 0755
+
+- name: upload web app source
+    copy:
+      src: files/
+      dest: /var/www/html/
    
 - name: permit traffic in default zone for https service
   firewalld:
